@@ -1,8 +1,6 @@
 export default function createEmployeesObject(departmentName, employees) {
     const billy = {
-        $departmentName: [
-        $employees,
-        ],
+        [departmentName]: employees,
    }
     return billy
 }
