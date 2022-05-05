@@ -5,7 +5,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
 
 
     const prom1 = await signUpUser(firstName, lastName).then((prom) => (
-        {'status': 'resolved',
+        {'status': 'fulfilled',
         'vallue': prom,}
     ))
 
