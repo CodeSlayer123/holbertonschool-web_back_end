@@ -14,5 +14,5 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
         'value': prom.toString()}
 
     ))
-    return Promise.allSettled([prom1, prom2])
+    return Promise.resolve([prom1, prom2])
 }
