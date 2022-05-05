@@ -11,7 +11,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
 
     const prom2 = await uploadPhoto(fileName).catch((prom) => (
         {'status': 'rejected',
-        'value': prom.toString()}
+        'value': prom.toString(),}
 
     ))
     return Promise.resolve([prom1, prom2])
