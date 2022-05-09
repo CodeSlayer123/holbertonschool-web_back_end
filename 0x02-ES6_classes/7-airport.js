@@ -3,5 +3,7 @@ export default class Airport{
         this._name = name;
         this._code = code;
     }
-    // this.prototype.toString = this._code
+    toString(){
+        return `[object ${this._code}]`
+    }
 }
