@@ -3,7 +3,7 @@ export default function cleanSet(set, startString) {
   let result = '';
   let i = 0;
 
-  if (startString === '' || !set) {
+  if (startString === '' || typeof startString != 'string') {
     return '';
   }
   set.forEach((item) => {
