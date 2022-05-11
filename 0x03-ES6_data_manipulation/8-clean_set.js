@@ -3,7 +3,7 @@ export default function cleanSet(set, startString) {
   let result = '';
   let i = 0;
 
-  if (startString === '' || typeof startString != 'string') {
+  if (startString === '' || typeof startString !== 'string') {
     return '';
   }
   set.forEach((item) => {
@@ -11,7 +11,9 @@ export default function cleanSet(set, startString) {
       if (i !== 0 && i !== set.size) {
         result += '-';
       }
-      result += item.substr(startString.length);
+      if (typeof item === 'string') {
+        result += item.substr(startString.length);
+      }
       i += 1;
     }
   });
