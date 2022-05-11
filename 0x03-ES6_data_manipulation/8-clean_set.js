@@ -7,13 +7,11 @@ export default function cleanSet(set, startString) {
     return '';
   }
   set.forEach((item) => {
-    if (item.startsWith(startString)) {
+    if (typeof item === 'string' && item.startsWith(startString)) {
       if (i !== 0 && i !== set.size) {
         result += '-';
       }
-      if (typeof item === 'string') {
-        result += item.substr(startString.length);
-      }
+      result += item.substr(startString.length);
       i += 1;
     }
   });
