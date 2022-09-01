@@ -2,9 +2,12 @@
 """task 0"""
 import asyncio
 import random
+import typing
 
 
-async def async_generator() -> float:
+async def async_generator() -> typing.Generator[float,
+                                                typing.NoneType,
+                                                typing.NoneType]:
     """task 0"""
 
     for i in range(10):
