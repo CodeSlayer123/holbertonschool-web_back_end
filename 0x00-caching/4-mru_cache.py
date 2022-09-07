@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""task 4"""
+"""task 4 task 4 task 4 task 4 task 4 task 4"""
 from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
-    """task 4"""
+    """task 4 task 4 task 4 task 4 task 4"""
     def __init__(self):
         """ Initiliaze
         """

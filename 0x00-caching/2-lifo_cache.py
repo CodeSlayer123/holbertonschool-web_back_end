@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""task 2"""
+"""task 2 task 2 task 2 task 2 task 2 task 2"""
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """task 2"""
+    """task 2 task 2 task 2 task 2 task 2 task 2"""
     def __init__(self):
         """ Initiliaze
         """

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""task 1"""
+"""task 1 task 1 task 1 task 1 task 1"""
 from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """task 1"""
+    """task 1 task 1 task 1 task 1 task 1 task 1"""
     def __init__(self):
         """ Initiliaze
         """

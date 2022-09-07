@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""task 3"""
+"""task 3 task 3 task 3 task 3 task 3"""
 from base_caching import BaseCaching
 import collections
 
 
 class LRUCache(BaseCaching):
-    """task 3"""
+    """task 3 task 3 task 3 task 3 task 3 task 3"""
     def __init__(self):
         """ Initiliaze
         """
