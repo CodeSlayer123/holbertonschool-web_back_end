@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """task 0"""
+    """task 0 task 0 task 0 task 0 task 0"""
     def __init__(self):
         """ Initiliaze
         """
