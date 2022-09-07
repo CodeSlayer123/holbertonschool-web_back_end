@@ -14,12 +14,13 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """sets an item"""
-        self.get(key)
+        if key and item:
+            self.get(key)
 
-        self.cache_data[key] = item
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            deleted = self.cache_data.popitem(last=False)
-            print("DISCARD", deleted[0])
+            self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                deleted = self.cache_data.popitem(last=False)
+                print("DISCARD", deleted[0])
 
     def get(self, key):
         """gets an item"""
