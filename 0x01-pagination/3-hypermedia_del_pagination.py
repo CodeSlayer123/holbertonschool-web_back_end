@@ -63,8 +63,8 @@ class Server:
         rows = self.dataset()
         page_range = index_range(page, page_size)
         new_list = []
-        x = page_range[0]
-        y = page_range[1]
+        x = int(page_range[0])
+        y = int(page_range[1])
         if x > len(rows) or y > len(rows):
             return new_list
         for i in range(x, y):
