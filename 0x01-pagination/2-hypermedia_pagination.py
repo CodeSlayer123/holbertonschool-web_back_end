@@ -6,7 +6,7 @@ import math
 from typing import List
 
 
-def index_range(page:int, page_size: int) -> Tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Task 2 Task 2 Task 2 Task 2 Task 2"""
 
     return (page_size * (page - 1), page_size * page)
@@ -32,7 +32,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page:int = 1, page_size:int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         "function that gets page and returns in form of list"
         assert page > 0
         assert isinstance(page_size, int)
@@ -47,7 +47,7 @@ class Server:
             new_list.append(rows[i])
         return new_list
 
-    def get_hyper(self, page:int = 1, page_size:int = 10) -> List[List]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         "function that returns dictionary containing key-value pairs"
         total = math.ceil(len(self.dataset()) / page_size)
         prev = page - 1
@@ -66,4 +66,3 @@ class Server:
             "prev_page": prev,
             "total_pages": total
         }
-
