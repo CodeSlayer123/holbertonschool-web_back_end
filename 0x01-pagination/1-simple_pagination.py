@@ -34,8 +34,11 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         "function that gets page and returns in form of list"
-        assert page > 0
+        assert isinstance(page, int)
         assert isinstance(page_size, int)
+        assert page > 0
+        assert page_size > 0
+
         rows = self.dataset()
         page_range = index_range(page, page_size)
         new_list = []
