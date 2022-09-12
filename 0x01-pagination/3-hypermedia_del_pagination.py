@@ -9,9 +9,9 @@ from typing import List, Dict, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-        """Task 2 Task 2 Task 2 Task 2 Task 2"""
+    """Task 2 Task 2 Task 2 Task 2 Task 2"""
 
-        return (page_size * (page - 1), page_size * page)
+    return (page_size * (page - 1), page_size * page)
 
 
 class Server:
@@ -46,13 +46,14 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            assert index > 0
-            assert index < len(self.dataset())
-            return {
-                "index": index,
-                "next_index": index + page_size,
-                "page_size": page_size,
-                "data": self.get_page(index / page_size, page_size)
+        """Gets hyper index and returns dictionary"""
+        assert index > 0
+        assert index < len(self.dataset())
+        return {
+            "index": index,
+            "next_index": index + page_size,
+            "page_size": page_size,
+            "data": self.get_page(index / page_size, page_size)
             }
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
