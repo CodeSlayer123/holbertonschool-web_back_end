@@ -29,11 +29,17 @@ class RedactingFormatter(logging.Formatter):
 
 def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
     """task 0 task 0 task 0 task 0 task 0 task 0"""
+    for field in fields:
+        regexString = f"(?<={field}=).*?(?={separator})"
+        message = re.sub(regexString, redaction, message)
+    return message
+    """
     need_to_be_redacted = filter_datum_splitter(fields, message, separator)
     result = message
     for j in need_to_be_redacted:
         result = re.sub(j, redaction, result)
     return result
+    """
 
 def filter_datum_splitter(fields: List[str], message: str, separator: str) -> List[str]:
     """splits the message by equal sign and returns a list of each value that needs to be redacted"""
