@@ -49,8 +49,9 @@ def filter_datum_splitter(fields: List[str], message: str, separator: str) -> Li
     return need_to_be_redacted
 
 def get_logger() -> logging.Logger:
-    logging.basicConfig(level=logging.INFO, propagate=False)
     log = logging.getLogger("user_data")
+    log.setLevel(logging.INFO)
+    log.propagate = False
     ch = logging.StreamHandler()
     ch.setFormatter(RedactingFormatter(PII_FIELDS))
     log.addHandler(ch)
