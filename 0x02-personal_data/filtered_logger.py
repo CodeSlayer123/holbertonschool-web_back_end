@@ -67,11 +67,14 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
 def main():
     log = get_logger()
     my_db = get_db()
-    cursor = my_db.cursor()
+    cursor = my_db.cursor(dictionary=True)
     query = "SELECT * FROM users;"
     cursor.execute(query)
     rows = cursor.fetchall()
-    log.warning(rows)
+    for row in rows:
+        for key, value in row.items():
+            my_format = "; ".join(f"{key}={value}")
+            log.warning(my_format)
     my_db.close()
 
 if __name__ == "__main__":
