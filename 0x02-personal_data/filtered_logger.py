@@ -30,12 +30,12 @@ class RedactingFormatter(logging.Formatter):
 def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
     """task 0 task 0 task 0 task 0 task 0 task 0"""
     
-    
     need_to_be_redacted = filter_datum_splitter(fields, message, separator)
     result = message
-    
     for j in need_to_be_redacted:
-        result = re.sub(j, redaction, result)
+
+        result = re.sub(j, redaction + separator, result)
+
     return result
     
 
@@ -49,7 +49,7 @@ def filter_datum_splitter(fields: List[str], message: str, separator: str) -> Li
             key = x[0]
             value = x[1]
         if (key in fields and value not in need_to_be_redacted):
-            need_to_be_redacted.append(value)
+            need_to_be_redacted.append(value + separator)
     return need_to_be_redacted
 
 def get_logger() -> logging.Logger:
