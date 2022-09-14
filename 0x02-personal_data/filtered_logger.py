@@ -40,7 +40,7 @@ def filter_datum_splitter(fields: List[str], message: str, separator: str) -> Li
     need_to_be_redacted = []
     individual_fields = message.split(separator)
     for i in individual_fields:
-        if ("=" in i):
+        if (len(i) > 0):
             x = i.split("=")
             key = x[0]
             value = x[1]
