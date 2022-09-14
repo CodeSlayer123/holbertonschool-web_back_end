@@ -33,6 +33,7 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
     
     need_to_be_redacted = filter_datum_splitter(fields, message, separator)
     result = message
+    
     for j in need_to_be_redacted:
         result = re.sub(j, redaction, result)
     return result
@@ -47,7 +48,7 @@ def filter_datum_splitter(fields: List[str], message: str, separator: str) -> Li
             x = i.split("=")
             key = x[0]
             value = x[1]
-        if (key in fields):
+        if (key in fields and value not in need_to_be_redacted):
             need_to_be_redacted.append(value)
     return need_to_be_redacted
 
