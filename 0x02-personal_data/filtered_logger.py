@@ -56,6 +56,7 @@ def filter_datum_splitter(fields: List[str], message: str,
 
 
 def get_logger() -> logging.Logger:
+    """creates and returns formatted log"""
     log = logging.getLogger("user_data")
     log.setLevel(logging.INFO)
     log.propagate = False
@@ -66,6 +67,7 @@ def get_logger() -> logging.Logger:
 
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
+    """connects to a mysql database"""
     return mysql.connector.connect(
         host=os.environ.get("PERSONAL_DATA_DB_HOST"),
         user=os.environ.get("PERSONAL_DATA_DB_USERNAME"),
@@ -75,6 +77,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
 
 
 def main():
+    """this is the main file to run other functions"""
     log = get_logger()
     my_db = get_db()
     cursor = my_db.cursor(dictionary=True)
