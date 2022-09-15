@@ -13,8 +13,7 @@ PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
-        """
+    """ Redacting Formatter class that contains redacting formatter"""
 
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
@@ -86,6 +85,7 @@ def main():
             my_format = "; ".join(f"{key}={value}")
             log.warning(my_format)
     my_db.close()
+
 
 if __name__ == "__main__":
     main()
