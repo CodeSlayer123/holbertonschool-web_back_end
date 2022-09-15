@@ -11,6 +11,7 @@ import os
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -24,10 +25,12 @@ class RedactingFormatter(logging.Formatter):
         self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
-        return filter_datum(self.fields, self.REDACTION, super().format(record), self.SEPARATOR)
+        return filter_datum(self.fields, self.REDACTION,
+                            super().format(record), self.SEPARATOR)
 
 
-def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
+def filter_datum(fields: List[str], redaction: str,
+                 message: str, separator: str) -> str:
     """task 0 task 0 task 0 task 0 task 0 task 0"""
     need_to_be_redacted = filter_datum_splitter(fields, message, separator)
     result = message
@@ -36,8 +39,10 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
     return result
 
 
-def filter_datum_splitter(fields: List[str], message: str, separator: str) -> List[str]:
-    """splits the message by equal sign and returns a list of each value that needs to be redacted"""
+def filter_datum_splitter(fields: List[str], message: str,
+                          separator: str) -> List[str]:
+    """splits message by equal sign and returns list of
+    each value that needs to be redacted"""
     need_to_be_redacted = []
     individual_fields = message.split(separator)
     for i in individual_fields:
@@ -49,6 +54,7 @@ def filter_datum_splitter(fields: List[str], message: str, separator: str) -> Li
             need_to_be_redacted.append(value + separator)
     return need_to_be_redacted
 
+
 def get_logger() -> logging.Logger:
     log = logging.getLogger("user_data")
     log.setLevel(logging.INFO)
@@ -58,6 +64,7 @@ def get_logger() -> logging.Logger:
     log.addHandler(ch)
     return log
 
+
 def get_db() -> mysql.connector.connection.MySQLConnection:
     return mysql.connector.connect(
         host=os.environ.get("PERSONAL_DATA_DB_HOST"),
@@ -65,6 +72,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         password=os.environ.get("PERSONAL_DATA_DB_PASSWORD"),
         database=os.environ.get("PERSONAL_DATA_DB_NAME")
         )
+
 
 def main():
     log = get_logger()
