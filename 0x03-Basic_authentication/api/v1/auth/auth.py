@@ -24,7 +24,6 @@ class Auth():
                 return request.headers["Authorization"]
             return None
 
-
         def current_user(self, request=None) -> TypeVar('User'):
             """public method current_user"""
             return None
