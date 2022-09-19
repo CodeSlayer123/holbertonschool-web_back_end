@@ -5,6 +5,7 @@ from typing import TypeVar, List
 
 
 class Auth():
+    """Class Auth inside of file auth"""
         def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
             """public method require_auth"""
             return False
