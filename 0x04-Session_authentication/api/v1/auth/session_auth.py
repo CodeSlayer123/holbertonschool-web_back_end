@@ -28,7 +28,9 @@ class SessionAuth(Auth):
 
         def current_user(self, request=None):
             """returns User instance based on cookie value"""
-            return User.get(self.user_id_for_session_id(self.session_cookie(request)))
+            return User.get(
+                self.user_id_for_session_id(
+                    self.session_cookie(request)))
 
         def destroy_session(self, request=None):
             """deletes user session / logout"""
