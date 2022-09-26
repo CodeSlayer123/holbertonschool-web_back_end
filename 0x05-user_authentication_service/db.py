@@ -58,10 +58,11 @@ class DB:
             user = self.find_user_by(id=user_id)
 
             for key, value in keywords.items():
-                try:
+                if hasattr(user, key):
                     user.key = value
-                    self._session.commit()
-                except Exception:
+                else:
                     raise ValueError
+            self._session.commit()
+
         except Exception:
             raise ValueError
