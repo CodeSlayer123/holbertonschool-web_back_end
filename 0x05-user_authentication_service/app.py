@@ -11,10 +11,12 @@ from sqlalchemy.orm.exc import NoResultFound
 app = Flask(__name__)
 AUTH = Auth()
 
+
 @app.route("/", methods=['GET'])
 def start_up():
     """returns JSON payload of form"""
     return jsonify({"message": "Bienvenue"})
+
 
 @app.route("/users", methods=['POST'])
 def register():
@@ -28,12 +30,12 @@ def register():
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
 
+
 @app.route("/sessions", methods=['POST'])
 def login():
     """logs in to session"""
     email = request.form.get("email")
     password = request.form.get("password")
-
 
     try:
         AUTH.valid_login(email=email, password=password)
@@ -41,8 +43,9 @@ def login():
         response = jsonify({"email": email, "message": "logged in"})
         response.set_cookie("session_id", session_id)
         return response
-    except:
+    except Exception:
         abort(401)
+
 
 @app.route("/sessions", methods=['DELETE'])
 def logout():
@@ -52,8 +55,9 @@ def logout():
         AUTH.get_user_from_session_id(session_id)
         AUTH.destroy_session(session_id)
         return redirect("/")
-    except:
+    except Exception:
         abort(403)
+
 
 @app.route("/profile", methods=['GET'])
 def profile():
@@ -65,6 +69,7 @@ def profile():
     except Exception:
         abort(403)
 
+
 @app.route("/reset_password", methods=['POST'])
 def get_reset_password_token():
     """resets the password token"""
@@ -75,6 +80,7 @@ def get_reset_password_token():
     except Exception:
         abort(403)
 
+
 @app.route("/reset_password", methods=['PUT'])
 def update_password():
     """updates the password token"""
@@ -83,7 +89,7 @@ def update_password():
         reset_token = request.form.get("reset_token")
         new_password = request.form.get("new_password")
         AUTH.update_password(reset_token, new_password)
-        return jsonify({"email":email, "message": "Password updated"}), 200
+        return jsonify({"email": email, "message": "Password updated"}), 200
     except Exception:
         abort(403)
 

@@ -34,9 +34,9 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email:str, hashed_password:str) -> User:
+    def add_user(self, email: str, hashed_password: str) -> User:
         """adds and saves a user to users database"""
-        user = User(email=email,hashed_password=hashed_password )
+        user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
         return user
@@ -52,14 +52,13 @@ class DB:
         except InvalidRequestError:
             raise InvalidRequestError
 
-    def update_user(self, user_id:int, **keywords) -> None:
+    def update_user(self, user_id: int, **keywords) -> None:
         """locates user to update, then updates  user’s attributes"""
-        user = self.find_user_by(id = user_id)
+        user = self.find_user_by(id=user_id)
 
         for key, value in keywords.items():
             try:
                 user.key = value
-            except:
+            except Exception:
                 raise ValueError
         self._session.commit()
-
