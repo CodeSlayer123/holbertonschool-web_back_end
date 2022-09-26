@@ -56,6 +56,7 @@ class Auth:
             return None
 
     def get_user_from_session_id(self, session_id:str) -> User:
+        """returns user from given session_id"""
         if session_id is None:
             return None
         try:
@@ -65,6 +66,7 @@ class Auth:
             return None
 
     def destroy_session(self, user_id:int) -> None:
+        """destroy session, updates user session_id to None"""
         if user_id is None:
             return None
         try:
@@ -73,3 +75,23 @@ class Auth:
             return None
         except Exception:
             return None
+
+    def get_reset_password_token(self, email:str) -> str:
+        """generates UUID and updates user's reset_token database field"""
+        try:
+            user = self._db.find_user_by(email=email)
+            reset_token = _generate_uuid()
+            self._db.update_user(user.id, reset_token=reset_token)
+            return reset_token
+        except Exception:
+            raise ValueError
+
+    def update_password(self, reset_token:str, password:str) -> None:
+        """"""
+        try:
+            user = self._db.find_user_by(reset_token=reset_token)
+            hashed_password = _hash_password(password)
+            self._db.update_user(user.id, hashed_password=hashed_password, reset_token=None)
+
+        except Exception:
+            raise ValueError
