@@ -9,10 +9,10 @@ from user import User
 
 
 def _hash_password(password: str) -> bytes:
-        """returns input password hashed with bcrypt.hashpw"""
-        salt = bcrypt.gensalt()
-        hashed = bcrypt.hashpw(password.encode(), salt)
-        return hashed
+    """returns input password hashed with bcrypt.hashpw"""
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode(), salt)
+    return hashed
 
 
 def _generate_uuid() -> str:
