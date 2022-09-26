@@ -9,13 +9,13 @@ from user import User
 
 
 def _hash_password(password: str) -> bytes:
-        """returns salted hash of input password, hashed with bcrypt.hashpw"""
+        """returns input password hashed with bcrypt.hashpw"""
         salt = bcrypt.gensalt()
         hashed = bcrypt.hashpw(password.encode(), salt)
         return hashed
 
 
-def _generate_uuid():
+def _generate_uuid() -> str:
     """return string representation of new UUID"""
     return str(uuid.uuid4())
 
@@ -37,7 +37,7 @@ class Auth:
             user = self._db.add_user(email, hashed_password)
             return user
 
-    def valid_login(self, email, password) -> bool:
+    def valid_login(self, email: str, password: str) -> bool:
         """validates login with email and password"""
         try:
             user = self._db.find_user_by(email=email)
@@ -47,12 +47,12 @@ class Auth:
             return False
 
     def create_session(self, email: str) -> str:
-        """finds user corresponding to email, generates new UUID and stores it in
-        database as user’s session_id and returns session ID"""
+        """finds user, generates new UUID and stores it
+        in database and returns session ID"""
         try:
             user = self._db.find_user_by(email=email)
-            uuid = _generate_uuid()
-            self._db.update_user(user.id, session_id=uuid)
+            session_id = _generate_uuid()
+            self._db.update_user(user.id, session_id=session_id)
             return uuid
         except Exception:
             return None

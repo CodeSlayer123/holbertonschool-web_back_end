@@ -54,11 +54,14 @@ class DB:
 
     def update_user(self, user_id: int, **keywords) -> None:
         """locates user to update, then updates  user’s attributes"""
-        user = self.find_user_by(id=user_id)
+        try:
+            user = self.find_user_by(id=user_id)
 
-        for key, value in keywords.items():
-            try:
-                user.key = value
-            except Exception:
-                raise ValueError
-        self._session.commit()
+            for key, value in keywords.items():
+                try:
+                    user.key = value
+                except Exception:
+                    raise ValueError
+            self._session.commit()
+        except Exception:
+            raise ValueError
