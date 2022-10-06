@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """task 7 flask app.py"""
 from flask import Flask, escape, request, render_template, session
 from flask_babel import Babel, gettext
