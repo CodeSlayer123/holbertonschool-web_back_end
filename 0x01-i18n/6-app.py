@@ -30,6 +30,7 @@ def startup():
     """renders 0-index html page"""
     return render_template('6-index.html')
 
+
 @babel.localeselector
 def get_locale():
     """gets the locale"""
@@ -52,12 +53,12 @@ def get_user():
             return user
     return None
 
+
 @app.before_request
 def before_request():
     """is called before request"""
     flask.g.user = get_user()
 
 
-
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
