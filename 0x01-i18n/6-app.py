@@ -2,7 +2,7 @@
 
 """task 6 flask app.py"""
 from flask import Flask, escape, request, render_template, session
-from flask_babel import Babel, gettext
+from flask_babel import Babel
 import flask
 app = Flask(__name__)
 
