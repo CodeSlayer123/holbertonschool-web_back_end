@@ -5,6 +5,6 @@ CREATE TRIGGER `decrease`
     FOR EACH ROW
     BEGIN
       UPDATE items
-           SET quantity = quantity-New.number
-           WHERE name=New.item_name;
+           SET quantity = quantity - NEW.number
+           WHERE name = NEW.item_name;
     END;
