@@ -10,7 +10,7 @@ def log_stats(mongo_collection, topic):
     client = MongoClient()
     db = client.logs
     collection = db.nginx
-    all_collections = collection.count_documents()
+    all_collections = collection.count()
     print(f"{all_collections} logs")
     print("Methods:")
     for meth in methods:
