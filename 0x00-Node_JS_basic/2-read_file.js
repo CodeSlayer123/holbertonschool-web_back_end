@@ -1,5 +1,4 @@
 var fs=require("fs")
-const { parse } = require("csv-parse");
 
 function countStudents(path){
     students = []

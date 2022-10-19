@@ -1,19 +1,17 @@
-const fs = require('fs').promises;
-const { parse } = require("csv-parse");
+const fs = require('fs');
 
 const countStudents = async (path) => {
     students = []
     cs = []
     swe = []
-
     fs.access(path, (error) => {
         if (error) {
             throw new Error("Cannot load the database");
-        }
+        }})
 
+    const newPromise = await fs.promises.readFile(path,"utf8");
 
-    const data = await fs.readFile(path,
-            {encoding:'utf8', flag:'r'}).toString().split("\n");
+    let data = newPromise.split('\n');
 
     for (i in data){
         students.push(data[i].split(","))
