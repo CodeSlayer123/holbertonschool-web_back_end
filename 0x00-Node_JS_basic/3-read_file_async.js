@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const countStudents = async (path) => {
+
     students = []
     cs = []
     swe = []
@@ -25,12 +26,13 @@ const countStudents = async (path) => {
             swe.push(students[i][0])
         }
     }
+    numOfStudents = `Number of students: ${students.length - 1}`
+    numOfStudentsCS = `Number of students in CS: ${cs.length}. List: ${cs.join(", ")}`
+    numOfStudentsSWE = `Number of students in SWE: ${swe.length}. List: ${swe.join(", ")}`
 
-  console.log(`Number of students: ${students.length - 1}`)
-
-  console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(", ")}`)
-  console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(", ")}`)
-
+    result = `${numOfStudents}\n${numOfStudentsCS}\n${numOfStudentsSWE}`
+    console.log(result)
+    return result
 }
 
 module.exports = countStudents
