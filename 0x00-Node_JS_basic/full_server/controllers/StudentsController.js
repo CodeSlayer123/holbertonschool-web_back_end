@@ -10,10 +10,8 @@ class StudentsController{
             let studentsSWE = values[2].sort()
             response.write(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.join(", ")}\n`)
             response.write(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.join(", ")}`)
+            response.end()
         })
-        .catch((err) => res.end(output + err.message));
-        response.end();
-
 
     }
 
@@ -37,11 +35,9 @@ class StudentsController{
                 response.write(`List: ${studentsSWE.join(", ")}`)
 
             }
+            response.end()
 
         })
-        .catch((err) => res.end(output + err.message));
-        response.end();
-
     }
 }
 
