@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
     await countStudents(path).then(values => {
         res.write(values)
     })
+    .catch((err) => res.end(output + err.message));
     res.end();
 
  });
