@@ -6,14 +6,15 @@ const app = http.createServer(async (req, res) => {
     path = process.argv[2]
 
     if (req.url === "/"){
-        res.write('Hello Holberton School!');
+        res.end('Hello Holberton School!');
     }
 
     if (req.url === "/students"){
-        res.write('This is the list of our students');
+        res.write('This is the list of our students\n');
         await countStudents(path).then(values => {
             res.write(values)
         })
+        .catch((err) => res.end(output + err.message));
     }
     res.end();
 
