@@ -8,8 +8,7 @@ function countStudents(path){
         throw new Error("Cannot load the database");
     }
 
-    const data = fs.readFileSync(path,
-            {encoding:'utf8', flag:'r'}).toString().split("\n");
+    const data = fs.readFileSync(path, 'utf8').split("\n");
 
     for (i in data){
         students.push(data[i].split(","))
@@ -25,7 +24,6 @@ function countStudents(path){
     }
 
   console.log(`Number of students: ${students.length - 1}`)
-
   console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(", ")}`)
   console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(", ")}`)
 
