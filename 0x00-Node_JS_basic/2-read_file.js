@@ -10,8 +10,11 @@ function countStudents(path){
 
     const data = fs.readFileSync(path, 'utf8').split("\n");
 
-    for (i in data){
-        students.push(data[i].split(","))
+    for (let i = 1; i < data.length; i++){
+
+        if (data[i].length > 0){
+            students.push(data[i].split(","))
+        }
     }
 
     for (i in students){
@@ -23,7 +26,7 @@ function countStudents(path){
         }
     }
 
-  console.log(`Number of students: ${students.length - 1}`)
+  console.log(`Number of students: ${students.length}`)
   console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(", ")}`)
   console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(", ")}`)
 
