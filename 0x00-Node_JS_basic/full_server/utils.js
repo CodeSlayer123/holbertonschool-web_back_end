@@ -16,8 +16,11 @@ const readDatabase = async (path) =>{
 
     let data = newPromise.split('\n');
 
-    for (let i in data){
-        students.push(data[i].split(","))
+    for (let i = 1; i < data.length; i++){
+
+        if (data[i].length > 0){
+            students.push(data[i].split(","))
+        }
     }
 
     for (let student in students){
