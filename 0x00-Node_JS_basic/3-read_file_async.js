@@ -2,41 +2,40 @@ const fs = require('fs');
 
 const countStudents = async (path) => {
 
-    const students = [];
-    const cs = [];
-    const swe = [];
-    let db;
-    
-    fs.access(path, (error) => {
-        if (error) {
-            throw new Error('Cannot load the database');
-        }})
+  const students = [];
+  const cs = [];
+  const swe = [];
 
-    const newPromise = await fs.promises.readFile(path,'utf8');
+  fs.access(path, (error) => {
+    if (error) {
+      throw new Error('Cannot load the database');
+    }})
 
-    let data = newPromise.split('\n');
+  const newPromise = await fs.promises.readFile(path,'utf8');
 
-    for (let i = 1; i < data.length; i += 1){
+  let data = newPromise.split('\n');
 
-        if (data[i].length > 0){
-            students.push(data[i].split(','));
-        }
+  for (let i = 1; i < data.length; i += 1){
+
+    if (data[i].length > 0){
+      students.push(data[i].split(','));
     }
+  }
 
-    for (const i in students) {
-        if (students[i][3] === 'CS'){
-            cs.push(students[i][0]);
-        } else if (students[i][3] === 'SWE') {
-            swe.push(students[i][0]);
-        }
+  for (const i in students) {
+    if (students[i][3] === 'CS'){
+      cs.push(students[i][0]);
+    } else if (students[i][3] === 'SWE') {
+      swe.push(students[i][0]);
     }
-    const numOfStudents = `Number of students: ${students.length}`;
-    const numOfStudentsCS = `Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`;
-    const numOfStudentsSWE = `Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`;
+  }
+  const numOfStudents = `Number of students: ${students.length}`;
+  const numOfStudentsCS = `Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`;
+  const numOfStudentsSWE = `Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`;
 
-    const result = `${numOfStudents}\n${numOfStudentsCS}\n${numOfStudentsSWE}`;
-    console.log(result);
-    return result;
+  const result = `${numOfStudents}\n${numOfStudentsCS}\n${numOfStudentsSWE}`;
+  console.log(result);
+  return result;
 }
 
 module.exports = countStudents;
