@@ -19,8 +19,7 @@ function countStudents(path) {
   for (const i in students) {
     if (students[i][3] === 'CS') {
       cs.push(students[i][0]);
-    }
-    else if (students[i][3] === 'SWE') {
+    } else if (students[i][3] === 'SWE') {
       swe.push(students[i][0]);
     }
   }
