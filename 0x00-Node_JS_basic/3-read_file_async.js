@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 const countStudents = async (path) => {
-
   const students = [];
   const cs = [];
   const swe = [];
@@ -10,11 +9,10 @@ const countStudents = async (path) => {
     if (error) {
       throw new Error('Cannot load the database');
     }
-  })
+  });
   const newPromise = await fs.promises.readFile(path, 'utf8');
   const data = newPromise.split('\n');
-  for (let i = 1; i < data.length; i += 1){
-
+  for (let i = 1; i < data.length; i += 1) {
     if (data[i].length > 0) {
       students.push(data[i].split(','));
     }
