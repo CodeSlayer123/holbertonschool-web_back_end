@@ -1,23 +1,23 @@
-var fs=require("fs");
+const fs = require('fs');
 
-function countStudents(path){
-  students = [];
-  cs = [];
-  swe = [];
+function countStudents(path) {
+  let students = [];
+  let cs = [];
+  let swe = [];
   if (!fs.existsSync(path)) {
-    throw new Error("Cannot load the database");
+    throw new Error('Cannot load the database');
   }
 
-  const data = fs.readFileSync(path, 'utf8').split("\n");
+  const data = fs.readFileSync(path, 'utf8').split('\n');
 
-  for (let i = 1; i < data.length; i++){
-    if (data[i].length > 0){
-      students.push(data[i].split(","));
+  for (let i = 1; i < data.length; i+=1) {
+    if (data[i].length > 0) {
+      students.push(data[i].split(','));
     }
   }
 
-  for (i in students){
-    if (students[i][3] === 'CS'){
+  for (let i in students) {
+    if (students[i][3] === 'CS') {
       cs.push(students[i][0]);
     }
     else if (students[i][3] === 'SWE') {
