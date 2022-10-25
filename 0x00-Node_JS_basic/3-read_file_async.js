@@ -2,40 +2,41 @@ const fs = require('fs');
 
 const countStudents = async (path) => {
 
-    students = []
-    cs = []
-    swe = []
+    const students = [];
+    const cs = [];
+    const swe = [];
+    let db;
+    
     fs.access(path, (error) => {
         if (error) {
-            throw new Error("Cannot load the database");
+            throw new Error('Cannot load the database');
         }})
 
-    const newPromise = await fs.promises.readFile(path,"utf8");
+    const newPromise = await fs.promises.readFile(path,'utf8');
 
     let data = newPromise.split('\n');
 
-    for (let i = 1; i < data.length; i++){
+    for (let i = 1; i < data.length; i += 1){
 
         if (data[i].length > 0){
-            students.push(data[i].split(","))
+            students.push(data[i].split(','));
         }
     }
 
-    for (i in students){
+    for (const i in students) {
         if (students[i][3] === 'CS'){
-            cs.push(students[i][0])
-        }
-        else if (students[i][3] === 'SWE') {
-            swe.push(students[i][0])
+            cs.push(students[i][0]);
+        } else if (students[i][3] === 'SWE') {
+            swe.push(students[i][0]);
         }
     }
-    numOfStudents = `Number of students: ${students.length}`
-    numOfStudentsCS = `Number of students in CS: ${cs.length}. List: ${cs.join(", ")}`
-    numOfStudentsSWE = `Number of students in SWE: ${swe.length}. List: ${swe.join(", ")}`
+    const numOfStudents = `Number of students: ${students.length}`;
+    const numOfStudentsCS = `Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`;
+    const numOfStudentsSWE = `Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`;
 
-    result = `${numOfStudents}\n${numOfStudentsCS}\n${numOfStudentsSWE}`
-    console.log(result)
-    return result
+    const result = `${numOfStudents}\n${numOfStudentsCS}\n${numOfStudentsSWE}`;
+    console.log(result);
+    return result;
 }
 
-module.exports = countStudents
+module.exports = countStudents;
