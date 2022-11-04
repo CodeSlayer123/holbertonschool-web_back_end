@@ -16,8 +16,3 @@ client.subscribe('holberton school channel', () => {
     });
 
 });
-
-
-
-
-//client.subscribe('holberton school channel', (message) => {});
